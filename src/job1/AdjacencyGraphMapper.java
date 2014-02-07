@@ -10,7 +10,8 @@ import org.apache.hadoop.mapred.Reporter;
 import java.io.IOException;
 
 /**
- * Created by Ziyu on 2/6/14.
+ * Created by Ziyu and Brada on 2/6/14.
+ * Parses wiki pages to find page title and wiki links
  */
 public class AdjacencyGraphMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
     @Override
