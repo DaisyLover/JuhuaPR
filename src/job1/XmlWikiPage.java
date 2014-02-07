@@ -2,6 +2,7 @@ package job1;
 
 import org.apache.hadoop.io.Text;
 
+import java.nio.charset.CharacterCodingException;
 import java.util.ArrayList;
 
 /**
@@ -27,13 +28,16 @@ public class XmlWikiPage {
         this.pageText = pageText;
     }
 
-    public void parse(){
+    public void parse() throws CharacterCodingException {
         parseTitle();
         parseWikiLinks();
     }
 
-    private void parseTitle(){
-
+    private void parseTitle() throws CharacterCodingException {
+        int start = pageText.find("<title>");
+        int end = pageText.find("</title>", start);
+        start += 7; //add <title> length.
+        title = new Text(Text.decode(pageText.getBytes(), start, end - start));
     }
 
     private void parseWikiLinks(){
