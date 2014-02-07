@@ -14,7 +14,13 @@ import java.util.Iterator;
  */
 public class AdjacencyGraphReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
     @Override
-    public void reduce(Text text, Iterator<Text> textIterator, OutputCollector<Text, Text> textTextOutputCollector, Reporter reporter) throws IOException {
-
+    public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> outputCollector, Reporter reporter) throws IOException {
+        StringBuilder inlinkGraph = new StringBuilder();
+        inlinkGraph.append(key.toString());
+        while(values.hasNext()){
+            inlinkGraph.append(' ');
+            inlinkGraph.append(values.next().toString());
+        }
+        outputCollector.collect(key, new Text(inlinkGraph.toString()));
     }
 }

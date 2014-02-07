@@ -15,12 +15,12 @@ import java.io.IOException;
  */
 public class AdjacencyGraphMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
     @Override
-    public void map(LongWritable key, Text value, OutputCollector<Text, Text> textTextOutputCollector, Reporter reporter) throws IOException {
+    public void map(LongWritable key, Text value, OutputCollector<Text, Text> outputCollector, Reporter reporter) throws IOException {
         XmlWikiPage wikiPage = new XmlWikiPage(value);
         wikiPage.parse();
         Text thisPage = wikiPage.getTitle();
         for(Text linkedPage: wikiPage.getLinks()){
-            textTextOutputCollector.collect(thisPage, linkedPage);
+            outputCollector.collect(thisPage, linkedPage);
         }
     }
 }
