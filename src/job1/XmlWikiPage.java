@@ -4,6 +4,7 @@ import org.apache.hadoop.io.Text;
 
 import java.nio.charset.CharacterCodingException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,17 +14,17 @@ import java.util.regex.Pattern;
 public class XmlWikiPage {
     public static final String TITLE_START_TAG = "<title>";
     public static final String TITLE_END_TAG = "</title>";
-    public static final String WIKI_LINK_PATTERN = "\\[([^:#/]+)\\|?(?:[^:#/]+)\\]";
+    public static final String WIKI_LINK_PATTERN = "\\[([^:#/\\|\\[\\]]+)\\|?(?:[^:#/\\[\\]]*)\\]";
 
     private Text pageText = null;
     private Text title = null;
-    private ArrayList<Text> links = new ArrayList<Text>();
+    private HashSet<Text> links = new HashSet<Text>();
 
     public Text getTitle() {
         return title;
     }
 
-    public ArrayList<Text> getLinks() {
+    public HashSet<Text> getLinks() {
         return links;
     }
 
@@ -56,7 +57,7 @@ public class XmlWikiPage {
 
         //find wiki links and add to arraylist
         while (matcher.find()) {
-            String linkedPage = matcher.group();
+            String linkedPage = matcher.group(1);
             linkedPage = linkedPage.replaceAll("\\s", "_");
             if(linkedPage == null || linkedPage.isEmpty())
                 continue;

@@ -16,11 +16,12 @@ public class AdjacencyGraphReducer extends MapReduceBase implements Reducer<Text
     @Override
     public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> outputCollector, Reporter reporter) throws IOException {
         StringBuilder inlinkGraph = new StringBuilder();
-        inlinkGraph.append(key.toString());
+//        System.out.println("Reducing key: " + key.toString());
         while(values.hasNext()){
-            inlinkGraph.append(' ');
+            inlinkGraph.append('\t');
             inlinkGraph.append(values.next().toString());
         }
+//        System.out.println("Reduced output: " + inlinkGraph.toString());
         outputCollector.collect(key, new Text(inlinkGraph.toString()));
     }
 }

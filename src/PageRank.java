@@ -13,7 +13,7 @@ public class PageRank {
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
 
-//        master.buildAdjacencyGraph("");
+        master.buildAdjacencyGraph("/usr/hduser/pr/enwiki-latest-pages-articles1.xml", "/usr/hduser/pr/PageRank.inlink.out");
     }
 
 
