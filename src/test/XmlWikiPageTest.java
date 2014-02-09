@@ -36,4 +36,10 @@ public class XmlWikiPageTest {
         Assert.assertTrue("Error", s1.equals("results/PageRank.iter1.out"));
     }
 
+    @Test
+    public void testZYSB(){
+        StringBuilder sb = new StringBuilder();
+        Assert.assertTrue("True", "".equals(sb.toString()));
+    }
+
 }

@@ -1,4 +1,4 @@
-package job1;
+package job2;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
@@ -12,25 +12,19 @@ import java.util.Iterator;
 /**
  * Created by Ziyu on 2/6/14.
  */
-public class AdjacencyGraphReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
+public class AdjacencyOutGraphReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
     @Override
     public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> outputCollector, Reporter reporter) throws IOException {
-        StringBuilder inlinkGraph = new StringBuilder();
-        boolean hasPound = false;
+        StringBuilder outlinkGraph = new StringBuilder();
+        outlinkGraph.append("1.00");
 //        System.out.println("Reducing key: " + key.toString());
         while(values.hasNext()){
             String tmp = values.next().toString();
-            if("#".equals(tmp)){
-                hasPound = true;
-            }
-            else{
-                inlinkGraph.append('\t');
-                inlinkGraph.append(tmp);
+            if(!tmp.isEmpty()){
+                outlinkGraph.append('\t');
+                outlinkGraph.append(tmp);
             }
         }
-//        System.out.println("Reduced output: " + inlinkGraph.toString());
-        if(hasPound){
-            outputCollector.collect(key, new Text(inlinkGraph.toString()));
-        }
+        outputCollector.collect(key, new Text(outlinkGraph.toString()));
     }
 }

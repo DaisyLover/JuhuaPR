@@ -1,4 +1,4 @@
-package job3;
+package job4;
 
 import Common.PageRankedWikiPage;
 import org.apache.hadoop.io.Text;
@@ -28,8 +28,8 @@ public class PageRankCalculationReducer extends MapReduceBase implements Reducer
             } else{
                 pageRank += Double.parseDouble(tmp);
             }
-            page.setPageRank((1.0 - DAMPING_FACTOR) * page.getPageRank() + DAMPING_FACTOR * pageRank);
         }
-        collector.collect(new Text(page.getTitle()), new Text());
+        page.setPageRank((1.0 - DAMPING_FACTOR) * page.getPageRank() + DAMPING_FACTOR * pageRank);
+        collector.collect(key, new Text(page.serializeGrapnInfo()));
     }
 }

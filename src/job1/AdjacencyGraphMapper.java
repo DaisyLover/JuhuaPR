@@ -20,6 +20,7 @@ public class AdjacencyGraphMapper extends MapReduceBase implements Mapper<LongWr
         wikiPage.parse();
         Text thisPage = wikiPage.getTitle();
 //        System.out.println("Mapping Current page: " + thisPage.toString());
+        outputCollector.collect(thisPage, new Text("#"));
         for(Text linkedPage: wikiPage.getLinks()){
 //            System.out.println("Collected linked page: " + linkedPage.toString());
             outputCollector.collect(thisPage, linkedPage);

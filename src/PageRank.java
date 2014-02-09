@@ -2,11 +2,13 @@ import Common.Parameters;
 import job1.AdjacencyGraphMapper;
 import job1.AdjacencyGraphReducer;
 import job1.XmlInputFormat;
-import job2.PageCountMapper;
-import job2.PageCountReducer;
-import job3.PageRankCalculationMapper;
-import job3.PageRankCalculationReducer;
-import job4.PageRankOrderingMapper;
+import job2.AdjacencyOutGraphMapper;
+import job2.AdjacencyOutGraphReducer;
+import job3.PageCountMapper;
+import job3.PageCountReducer;
+import job4.PageRankCalculationMapper;
+import job4.PageRankCalculationReducer;
+import job5.PageRankOrderingMapper;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -27,14 +29,17 @@ public class PageRank {
 
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
+        String bucketName = args[0];
+        master.buildInGraph(bucketName + "/results/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
+        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out", bucketName + "/results/PageRank.outlink.out");
+        master.countPages(bucketName + "/results/PageRank.outlink.out", bucketName + "/results/PageRank.n.out");
 
-        master.buildAdjacencyGraph("/usr/hduser/pr/enwiki-latest-pages-articles1.xml", "/usr/hduser/pr/PageRank.inlink.out");
-//        master.countPages();
-
-
-        for (int runs = 0; runs < 5; runs++) {
-            master.calcuatePageRank(String.format("results/PageRank.iter%d.out", runs), String.format("results/PageRank.iter%d.out", runs + 1));
+        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out", bucketName + "/tmp/PageRank.iter1.out");
+        for (int runs = 1; runs < 8; runs++) {
+            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
         }
+        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out");
+        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out");
     }
 
 
@@ -43,7 +48,7 @@ public class PageRank {
 class PageRankMaster{
     private long n = 0;
 
-    public void buildAdjacencyGraph(String inputPath, String outputPath) throws IOException {
+    public void buildInGraph(String inputPath, String outputPath) throws IOException {
         JobConf conf = new JobConf(PageRankMaster.class);
 
         conf.set(XmlInputFormat.START_TAG_KEY, "<page>");
@@ -60,6 +65,24 @@ class PageRankMaster{
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(Text.class);
         conf.setReducerClass(AdjacencyGraphReducer.class);
+
+        JobClient.runJob(conf);
+    }
+
+    public void buildOutGraph(String inputPath, String outputPath) throws IOException {
+        JobConf conf = new JobConf(PageRankMaster.class);
+
+        // Setup input for mapper
+        FileInputFormat.setInputPaths(conf, new Path(inputPath));
+        conf.setInputFormat(TextInputFormat.class);
+        conf.setMapperClass(AdjacencyOutGraphMapper.class);
+
+        // Setup output from reducer
+        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+        conf.setOutputFormat(TextOutputFormat.class);
+        conf.setOutputKeyClass(Text.class);
+        conf.setOutputValueClass(Text.class);
+        conf.setReducerClass(AdjacencyOutGraphReducer.class);
 
         JobClient.runJob(conf);
     }

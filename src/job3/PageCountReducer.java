@@ -1,4 +1,4 @@
-package job2;
+package job3;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
