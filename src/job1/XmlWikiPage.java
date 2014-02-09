@@ -3,7 +3,6 @@ package job1;
 import org.apache.hadoop.io.Text;
 
 import java.nio.charset.CharacterCodingException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

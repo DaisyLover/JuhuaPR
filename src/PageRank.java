@@ -1,4 +1,10 @@
-import job1.*;
+import job1.AdjacencyGraphMapper;
+import job1.AdjacencyGraphReducer;
+import job1.XmlInputFormat;
+import job2.PageCountMapper;
+import job2.PageCountReducer;
+import job3.PageRankCalculationMapper;
+import job3.PageRankCalculationReducer;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
@@ -14,6 +20,12 @@ public class PageRank {
         PageRankMaster master = new PageRankMaster();
 
         master.buildAdjacencyGraph("/usr/hduser/pr/enwiki-latest-pages-articles1.xml", "/usr/hduser/pr/PageRank.inlink.out");
+//        master.countPages();
+
+
+        for (int runs = 0; runs < 5; runs++) {
+//            PageRankMaster.calcuatePageRank("wiki/ranking/iter"+nf.format(runs), "wiki/ranking/iter"+nf.format(runs + 1));
+        }
     }
 
 
@@ -37,6 +49,42 @@ class PageRankMaster{
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(Text.class);
         conf.setReducerClass(AdjacencyGraphReducer.class);
+
+        JobClient.runJob(conf);
+    }
+
+    public void countPages(String inputPath, String outputPath) throws IOException {
+        JobConf conf = new JobConf(PageRankMaster.class);
+
+        conf.setOutputKeyClass(Text.class);
+        conf.setOutputValueClass(Text.class);
+
+        conf.setInputFormat(TextInputFormat.class);
+        conf.setOutputFormat(TextOutputFormat.class);
+
+        FileInputFormat.setInputPaths(conf, new Path(inputPath));
+        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+
+        conf.setMapperClass(PageCountMapper.class);
+        conf.setReducerClass(PageCountReducer.class);
+
+        JobClient.runJob(conf);
+    }
+
+    public void calcuatePageRank(String inputPath, String outputPath) throws IOException {
+        JobConf conf = new JobConf(PageRankMaster.class);
+
+        conf.setOutputKeyClass(Text.class);
+        conf.setOutputValueClass(Text.class);
+
+        conf.setInputFormat(TextInputFormat.class);
+        conf.setOutputFormat(TextOutputFormat.class);
+
+        FileInputFormat.setInputPaths(conf, new Path(inputPath));
+        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+
+        conf.setMapperClass(PageRankCalculationMapper.class);
+        conf.setReducerClass(PageRankCalculationReducer.class);
 
         JobClient.runJob(conf);
     }
