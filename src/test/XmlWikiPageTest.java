@@ -29,4 +29,11 @@ public class XmlWikiPageTest {
         Assert.assertTrue("Error: A not equals to B!", A.equals(B));
         Assert.assertTrue("Error: A.hashcode != B.hashcode!", A.hashCode()==B.hashCode());
     }
+
+    @Test
+    public void testStringFormat(){
+        String s1 = String.format("results/PageRank.iter%d.out", 1);
+        Assert.assertTrue("Error", s1.equals("results/PageRank.iter1.out"));
+    }
+
 }

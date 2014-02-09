@@ -1,5 +1,6 @@
 package job3;
 
+import Common.PageRankedWikiPage;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
 import org.apache.hadoop.mapred.OutputCollector;
