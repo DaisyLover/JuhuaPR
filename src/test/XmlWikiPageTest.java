@@ -42,4 +42,31 @@ public class XmlWikiPageTest {
         Assert.assertTrue("True", "".equals(sb.toString()));
     }
 
+    @Test
+    public void testZYSB2(){
+        String sbzy = "erew\t";
+        String[] structure = sbzy.split("\\t");
+        Assert.assertTrue("True", structure.length == 1);
+    }
+
+    @Test
+    public void testZYSB3(){
+        StringBuilder inlinkGraph = new StringBuilder();
+        Assert.assertTrue("True", "".equals(inlinkGraph.toString()));
+    }
+
+    @Test
+    public void testZYSB4(){
+        String sbzy = "er\t e w\t";
+        Assert.assertTrue("True", "er__e_w_".equals(sbzy.replaceAll("[\\s\\t]", "_")));
+    }
+
+    @Test
+    public void testBrada(){
+        double pageRank = 1.0;
+        pageRank /= 0.0;
+        Assert.assertTrue("Error", pageRank == 1.0/3);
+    }
+
+
 }

@@ -30,16 +30,16 @@ public class PageRank {
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
         String bucketName = args[0];
-        master.buildInGraph(bucketName + "/results/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
-        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out", bucketName + "/results/PageRank.outlink.out");
-        master.countPages(bucketName + "/results/PageRank.outlink.out", bucketName + "/results/PageRank.n.out");
+//        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
+//        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-00000", bucketName + "/results/PageRank.outlink.out");
+//        master.countPages(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/results/PageRank.n.out");
 
-        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out", bucketName + "/tmp/PageRank.iter1.out");
-        for (int runs = 1; runs < 8; runs++) {
-            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
-        }
-        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out");
-        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out");
+        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
+//        for (int runs = 1; runs < 8; runs++) {
+//            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
+//        }
+//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out");
+//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out");
     }
 
 
@@ -128,7 +128,7 @@ class PageRankMaster{
         FileSystem fs = FileSystem.get(new Configuration());
         BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(pt)));
         String line = br.readLine();
-        n = Long.parseLong(line.split("\\t")[1]);
+        n = Long.parseLong(line.split("=")[1]);
 
         Path input = new Path(inputPath);
         Path output = new Path(outputPath);

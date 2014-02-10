@@ -36,7 +36,7 @@ public class PageRankedWikiPage {
     }
 
     public void restoreFromString(String structure){
-        String[] tmp = structure.split("\t");
+        String[] tmp = structure.split("\\t");
         title = tmp[0];
         pageRank = Double.parseDouble(tmp[1]);
         outLinks.clear();

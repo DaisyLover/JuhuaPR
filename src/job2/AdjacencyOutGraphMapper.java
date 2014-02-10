@@ -16,9 +16,9 @@ import java.io.IOException;
 public class AdjacencyOutGraphMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
     @Override
     public void map(LongWritable key, Text value, OutputCollector<Text, Text> outputCollector, Reporter reporter) throws IOException {
-        String[] structure = value.toString().split("\t");
-        if("".equals(structure[1])){
-            outputCollector.collect(new Text(structure[0]), new Text(""));
+        String[] structure = value.toString().split("\\t");
+        if(structure.length <= 1 || structure[1].isEmpty()){
+            outputCollector.collect(new Text(structure[0]), new Text("#"));
         }
         for(int i = 1; i < structure.length; ++i){
             outputCollector.collect(new Text(structure[i]), new Text(structure[0]));

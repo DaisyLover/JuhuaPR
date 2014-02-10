@@ -1,6 +1,7 @@
 package job1;
 
 import org.apache.hadoop.io.Text;
+import org.junit.Assert;
 
 import java.nio.charset.CharacterCodingException;
 import java.util.HashSet;
@@ -41,8 +42,9 @@ public class XmlWikiPage {
         int end = pageText.find(TITLE_END_TAG, start);
         start += 7; //<title> length.
         String titleString = Text.decode(pageText.getBytes(), start, end - start);
-        titleString = titleString.replaceAll("\\s", "_");
+        titleString = titleString.replaceAll("[\\s\\t]", "_");
         this.title = new Text(titleString);
+        assert !this.title.toString().isEmpty();
     }
 
     private void parseWikiLinks() throws CharacterCodingException {
@@ -57,7 +59,7 @@ public class XmlWikiPage {
         //find wiki links and add to arraylist
         while (matcher.find()) {
             String linkedPage = matcher.group(1);
-            linkedPage = linkedPage.replaceAll("\\s", "_");
+            linkedPage = linkedPage.replaceAll("[\\s\\t]", "_");
             if(linkedPage == null || linkedPage.isEmpty())
                 continue;
             this.links.add(new Text(linkedPage));

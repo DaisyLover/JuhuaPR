@@ -13,14 +13,14 @@ import java.util.Iterator;
 /**
  * Created by Ziyu on 2/8/14.
  */
-public class PageCountReducer extends MapReduceBase implements Reducer<Text, LongWritable, Text, Text> {
+public class PageCountReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
     @Override
-    public void reduce(Text key, Iterator<LongWritable> values, OutputCollector<Text, Text> collector, Reporter reporter) throws IOException {
+    public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> collector, Reporter reporter) throws IOException {
         long count = 0;
         while (values.hasNext()){
             count++;
             values.next();
         }
-        collector.collect(key, new Text(Long.toString(count)));
+        collector.collect(new Text("N="+count), new Text(""));
     }
 }

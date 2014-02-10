@@ -20,6 +20,7 @@ public class AdjacencyOutGraphReducer extends MapReduceBase implements Reducer<T
 //        System.out.println("Reducing key: " + key.toString());
         while(values.hasNext()){
             String tmp = values.next().toString();
+            if("#".equals(tmp)) continue;
             if(!tmp.isEmpty()){
                 outlinkGraph.append('\t');
                 outlinkGraph.append(tmp);

@@ -30,7 +30,7 @@ public class AdjacencyGraphReducer extends MapReduceBase implements Reducer<Text
         }
 //        System.out.println("Reduced output: " + inlinkGraph.toString());
         if(hasPound){
-            outputCollector.collect(key, new Text(inlinkGraph.toString()));
+            outputCollector.collect(key, new Text(inlinkGraph.toString().trim()));
         }
     }
 }
