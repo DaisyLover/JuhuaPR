@@ -25,11 +25,15 @@ public class PageRankCalculationReducer extends MapReduceBase implements Reducer
             if(tmp.contains("\t")){
                 //restore node structure
                 page.restoreFromString(tmp);
+//                System.out.println("Received structure info: " + tmp);
+//                System.out.println("Page restored as: " + page.serializeGrapnInfo());
             } else{
                 pageRank += Double.parseDouble(tmp);
+//                System.out.printf("Reducer %s received page rank = %s\n", key.toString(), tmp);
             }
         }
-        page.setPageRank((1.0 - DAMPING_FACTOR) * page.getPageRank() + DAMPING_FACTOR * pageRank);
+//        System.out.printf("Reducer %s received total page rank = %s\n", key.toString(), Double.toString(pageRank));
+        page.setPageRank((1.0 - DAMPING_FACTOR) + DAMPING_FACTOR * pageRank);
         collector.collect(key, new Text(page.serializeGrapnInfo()));
     }
 }

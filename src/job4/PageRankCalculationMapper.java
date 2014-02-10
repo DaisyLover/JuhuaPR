@@ -1,5 +1,6 @@
 package job4;
 
+import Common.PageRankedWikiPage;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
@@ -15,17 +16,18 @@ import java.io.IOException;
 public class PageRankCalculationMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
     @Override
     public void map(LongWritable key, Text value, OutputCollector<Text, Text> collector, Reporter reporter) throws IOException {
-        String[] structure = value.toString().split("\\t");
+        PageRankedWikiPage page = new PageRankedWikiPage();
+        page.restoreFromString(value.toString());
         //send graph info to self
-        collector.collect(new Text(structure[0]), value);
+        collector.collect(new Text(page.getTitle()), value);
         //calculate page rank to distribute
-        Double pageRank = Double.parseDouble(structure[1]);
-        if(structure.length > 2)
+        if(!page.getOutLinks().isEmpty())
         {
-            pageRank /= (structure.length - 2);
-            Text pageRankText = new Text(pageRank.toString());
-            for(int i = 2; i < structure.length; i++){
-                collector.collect(new Text(structure[i]), pageRankText);
+            Double pageRank = page.getPageRank() / page.getOutLinks().size();
+            Text pageRankText = new Text(Double.toString(pageRank));
+//            System.out.printf("Mapper: distributing page rank of %s with value=%s\n", page.getTitle(), pageRankText.toString());
+            for(String outlink: page.getOutLinks()){
+                collector.collect(new Text(outlink), pageRankText);
             }
         }
     }

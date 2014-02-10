@@ -7,17 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" afterPath="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job2/AdjacencyOutGraphMapper.java" afterPath="$PROJECT_DIR$/src/job2/AdjacencyOutGraphMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job2/AdjacencyOutGraphReducer.java" afterPath="$PROJECT_DIR$/src/job2/AdjacencyOutGraphReducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job3/PageCountMapper.java" afterPath="$PROJECT_DIR$/src/job3/PageCountMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job3/PageCountReducer.java" afterPath="$PROJECT_DIR$/src/job3/PageCountReducer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Common/ComparableWritable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank.java" afterPath="$PROJECT_DIR$/src/PageRank.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java" afterPath="$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Common/PageRankedWikiPage.java" afterPath="$PROJECT_DIR$/src/Common/PageRankedWikiPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job1/XmlWikiPage.java" afterPath="$PROJECT_DIR$/src/job1/XmlWikiPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java" afterPath="$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/XmlWikiPageTest.java" afterPath="$PROJECT_DIR$/src/test/XmlWikiPageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JuhuaPR.iws" />
@@ -78,8 +73,8 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/XmlWikiPageTest.java" line="67" class="test.XmlWikiPageTest" package="test">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/test/XmlWikiPageTest.java" line="84" class="test.XmlWikiPageTest" package="test">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -104,10 +99,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PageRank.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PageRank.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PageRank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="45" selection-start="6606" selection-end="6606" vertical-scroll-proportion="0.5931284" vertical-offset="2624" max-vertical-offset="3312">
+            <state line="177" column="58" selection-start="7255" selection-end="7255" vertical-scroll-proportion="0.0" vertical-offset="2892" max-vertical-offset="3474">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComparableWritable.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Common/ComparableWritable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="35" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,7 +124,7 @@
       <file leaf-file-name="PageCountMapper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/job3/PageCountMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="76" selection-start="574" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+            <state line="18" column="55" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
               <folding />
             </state>
           </provider>
@@ -127,9 +133,9 @@
       <file leaf-file-name="PageCountReducer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="66" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+            <state line="23" column="62" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -138,16 +144,7 @@
       <file leaf-file-name="PageRankCalculationReducer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="96" selection-start="1144" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="594">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageRankedWikiPage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Common/PageRankedWikiPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="49" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="864">
+            <state line="35" column="10" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.0" vertical-offset="138" max-vertical-offset="666">
               <folding />
             </state>
           </provider>
@@ -156,7 +153,7 @@
       <file leaf-file-name="PageRankCalculationMapper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="55" selection-start="737" selection-end="742" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="558">
+            <state line="28" column="14" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="576">
               <folding />
             </state>
           </provider>
@@ -165,17 +162,28 @@
       <file leaf-file-name="XmlWikiPageTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/XmlWikiPageTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="24" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1314">
+            <state line="50" column="28" selection-start="1548" selection-end="1564" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1602">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageRankOrderingMapper.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PageRankOrderingMapper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="37" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="594">
+            <state line="22" column="40" selection-start="841" selection-end="841" vertical-scroll-proportion="0.43371212" vertical-offset="41" max-vertical-offset="594">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageRankOrderingReducer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="97" selection-start="620" selection-end="620" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/job4/PageRankOrderingMapper.java" />
         <option value="$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java" />
         <option value="$PROJECT_DIR$/src/job2/AdjacencyGraphReducer.java" />
-        <option value="$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java" />
         <option value="$PROJECT_DIR$/src/job1/XmlWikiPage.java" />
         <option value="$PROJECT_DIR$/src/job2/AdjacencyOutGraphReducer.java" />
         <option value="$PROJECT_DIR$/src/job2/AdjacencyOutGraphMapper.java" />
@@ -219,9 +226,13 @@
         <option value="$PROJECT_DIR$/src/job3/PageCountMapper.java" />
         <option value="$PROJECT_DIR$/src/job3/PageCountReducer.java" />
         <option value="$PROJECT_DIR$/src/Common/PageRankedWikiPage.java" />
-        <option value="$PROJECT_DIR$/src/PageRank.java" />
-        <option value="$PROJECT_DIR$/src/test/XmlWikiPageTest.java" />
         <option value="$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java" />
+        <option value="$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java" />
+        <option value="$PROJECT_DIR$/src/Common/DecendingDoubleWritableComparable.java" />
+        <option value="$PROJECT_DIR$/src/Common/DescendingKeyComparator.java" />
+        <option value="$PROJECT_DIR$/src/PageRank.java" />
+        <option value="$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java" />
+        <option value="$PROJECT_DIR$/src/test/XmlWikiPageTest.java" />
       </list>
     </option>
   </component>
@@ -276,8 +287,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -382,24 +391,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="job4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -420,6 +411,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,73 +454,7 @@
       <recent name="$PROJECT_DIR$/lib/hadoop-1.0.3" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.XmlWikiPageTest.testBrada">
-    <configuration default="false" name="XmlWikiPageTest.testZYSB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JuhuaPR" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
-      <option name="METHOD_NAME" value="testZYSB" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="XmlWikiPageTest.testZYSB2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JuhuaPR" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
-      <option name="METHOD_NAME" value="testZYSB2" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="XmlWikiPageTest.testZYSB3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JuhuaPR" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
-      <option name="METHOD_NAME" value="testZYSB3" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.XmlWikiPageTest.testStringFormat">
     <configuration default="false" name="XmlWikiPageTest.testZYSB4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JuhuaPR" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -575,6 +502,72 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="XmlWikiPageTest.testWikiPageRestore" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JuhuaPR" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
+      <option name="METHOD_NAME" value="testWikiPageRestore" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="XmlWikiPageTest.testStringContains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JuhuaPR" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
+      <option name="METHOD_NAME" value="testStringContains" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="XmlWikiPageTest.testStringFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JuhuaPR" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.XmlWikiPageTest" />
+      <option name="METHOD_NAME" value="testStringFormat" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -706,19 +699,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB2" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB3" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB4" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testBrada" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB4" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testBrada" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testWikiPageRestore" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testStringContains" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testStringFormat" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testBrada" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB4" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB3" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB2" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testStringFormat" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testStringContains" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testWikiPageRestore" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testBrada" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.XmlWikiPageTest.testZYSB4" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -779,7 +772,11 @@
       <created>1391983063189</created>
       <updated>1391983063189</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finshed debuging for job 1 - 3">
+      <created>1392013314187</created>
+      <updated>1392013314187</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -789,9 +786,9 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -799,16 +796,16 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3268921" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20079681" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3268921" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252818" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -832,7 +829,8 @@
     <MESSAGE value="Added job2 package. Shifted job 2 and job3 to job3 and job4" />
     <MESSAGE value="Implemented mapreducer for counting pages and page rank calculation." />
     <MESSAGE value="Implemented PageRankOrderingMapper class for ordering output." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented PageRankOrderingMapper class for ordering output." />
+    <MESSAGE value="Finshed debuging for job 1 - 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finshed debuging for job 1 - 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -842,25 +840,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Common/Parameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="43" selection-start="124" selection-end="164" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="270">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="14" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1296">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/PageRankedWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="16" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="1098">
-          <folding />
-        </state>
+        <state line="37" column="16" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="1098" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -874,9 +856,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="71" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="495">
-          <folding />
-        </state>
+        <state line="24" column="71" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="495" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountMapper.java">
@@ -889,7 +869,9 @@
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="63" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="480">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -909,16 +891,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="21" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1080">
-          <folding />
-        </state>
+        <state line="34" column="21" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1080" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/PageRankedWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="34" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="915">
-          <folding />
-        </state>
+        <state line="52" column="34" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="915" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -932,16 +910,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="71" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="495">
-          <folding />
-        </state>
+        <state line="24" column="71" selection-start="987" selection-end="987" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="495" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="58" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="24" column="58" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -955,30 +929,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="41" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="495">
-          <folding />
-        </state>
+        <state line="21" column="41" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="495" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="16" selection-start="875" selection-end="879" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="22" column="16" selection-start="875" selection-end="879" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1095">
-          <folding />
-        </state>
+        <state line="26" column="18" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1095" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlInputFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1995">
-          <folding />
-        </state>
+        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1995" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -992,23 +958,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="99" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="576">
-          <folding />
-        </state>
+        <state line="16" column="99" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="576" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="31" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="576">
-          <folding />
-        </state>
+        <state line="11" column="31" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="576" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1296">
-          <folding />
-        </state>
+        <state line="18" column="30" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -1022,23 +982,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="99" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="576">
-          <folding />
-        </state>
+        <state line="16" column="99" selection-start="538" selection-end="538" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="576" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="25" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="576">
-          <folding />
-        </state>
+        <state line="19" column="25" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="576" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1296">
-          <folding />
-        </state>
+        <state line="18" column="30" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -1052,37 +1006,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="336" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="390">
-          <folding />
-        </state>
+        <state line="14" column="34" selection-start="336" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="390" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="66" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="480">
-          <folding />
-        </state>
+        <state line="22" column="66" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="20" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="840">
-          <folding />
-        </state>
+        <state line="47" column="20" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="840" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlInputFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1995">
-          <folding />
-        </state>
+        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1995" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="54" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405">
-          <folding />
-        </state>
+        <state line="13" column="54" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="405" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
@@ -1112,110 +1056,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlInputFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1980">
-          <folding />
-        </state>
+        <state line="52" column="29" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1980" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="51" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1152">
-          <folding />
-        </state>
+        <state line="46" column="51" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1152" />
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar!/java/lang/String.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="19" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.33333334" vertical-offset="976" max-vertical-offset="3978">
-          <folding />
-        </state>
+        <state line="65" column="19" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.33333334" vertical-offset="976" max-vertical-offset="3978" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job2/AdjacencyOutGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="52" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
+        <state line="22" column="52" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="47" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <folding />
-        </state>
+        <state line="27" column="47" selection-start="1000" selection-end="1000" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="19" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="504">
-          <folding />
-        </state>
+        <state line="19" column="19" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="504" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job2/AdjacencyOutGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="15" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+        <state line="24" column="15" selection-start="1014" selection-end="1014" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Common/PageRankedWikiPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="122" selection-end="122" vertical-scroll-proportion="0.14350797" vertical-offset="0" max-vertical-offset="878" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="62" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="14" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="10" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.0" vertical-offset="138" max-vertical-offset="666">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="76" selection-start="574" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+        <state line="18" column="55" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
+    <entry file="file://$PROJECT_DIR$/src/Common/ComparableWritable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="66" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+        <state line="9" column="35" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="96" selection-start="1144" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="594">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="55" selection-start="737" selection-end="742" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/PageRankedWikiPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="49" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="37" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="594">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/XmlWikiPageTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="24" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="1314">
+        <state line="50" column="28" selection-start="1548" selection-end="1564" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1602">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="45" selection-start="6606" selection-end="6606" vertical-scroll-proportion="0.5931284" vertical-offset="2624" max-vertical-offset="3312">
+        <state line="177" column="58" selection-start="7255" selection-end="7255" vertical-scroll-proportion="0.0" vertical-offset="2892" max-vertical-offset="3474">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="97" selection-start="620" selection-end="620" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="40" selection-start="841" selection-end="841" vertical-scroll-proportion="0.43371212" vertical-offset="41" max-vertical-offset="594">
+          <folding />
         </state>
       </provider>
     </entry>

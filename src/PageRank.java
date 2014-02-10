@@ -1,3 +1,4 @@
+import Common.ComparableWritable;
 import Common.Parameters;
 import job1.AdjacencyGraphMapper;
 import job1.AdjacencyGraphReducer;
@@ -9,10 +10,12 @@ import job3.PageCountReducer;
 import job4.PageRankCalculationMapper;
 import job4.PageRankCalculationReducer;
 import job5.PageRankOrderingMapper;
+import job5.PageRankOrderingReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.mapreduce.Job;
@@ -34,12 +37,12 @@ public class PageRank {
 //        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-00000", bucketName + "/results/PageRank.outlink.out");
 //        master.countPages(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/results/PageRank.n.out");
 
-        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
+//        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
 //        for (int runs = 1; runs < 8; runs++) {
-//            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
+//            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out/part-00000", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
 //        }
-//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out");
-//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out");
+        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "/results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out/part-00000");
+        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "/results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out/part-00000");
     }
 
 
@@ -128,11 +131,11 @@ class PageRankMaster{
         FileSystem fs = FileSystem.get(new Configuration());
         BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(pt)));
         String line = br.readLine();
-        n = Long.parseLong(line.split("=")[1]);
+        n = Long.parseLong(line.trim().split("=")[1]);
 
         Path input = new Path(inputPath);
         Path output = new Path(outputPath);
-        Path tempDirPath = new Path(output, "tmp");
+//        Path tempDirPath = new Path(output, "tmp");
 
         // Create the job configuration
         Configuration conf = new Configuration();
@@ -143,7 +146,7 @@ class PageRankMaster{
         // get the FileSystem instances for each path
         // this allows for the paths to live on different FileSystems (local, hdfs, s3, etc)
         FileSystem inputFS = input.getFileSystem(conf);
-        FileSystem outputFS = tempDirPath.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
 
         // if input path does not exists, fail
         if (!inputFS.exists(input)) {
@@ -152,12 +155,12 @@ class PageRankMaster{
         }
 
         // if output path exists, delete recursively
-        if (outputFS.exists(tempDirPath)) {
-            outputFS.delete(tempDirPath, true);
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
         }
 
         // Create the actual job and run it.
-        Job job = new Job(conf, "ordering page rank output job");
+        Job job = new Job(conf, "PageRank ordering");
         // finds the enclosing jar path
         job.setJarByClass(PageRankMaster.class);
 
@@ -165,12 +168,18 @@ class PageRankMaster{
         org.apache.hadoop.mapreduce.lib.input.TextInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tempDirPath);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
 
         // our mapper class
         job.setMapperClass(PageRankOrderingMapper.class);
         job.setMapOutputKeyClass(DoubleWritable.class);
         job.setMapOutputValueClass(Text.class);
+//        job.setSortComparatorClass(ComparableWritable.DescendingKeyComparator.class);
+
+        //reducer class
+        job.setReducerClass(PageRankOrderingReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);

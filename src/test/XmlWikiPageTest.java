@@ -1,5 +1,6 @@
 package test;
 
+import Common.PageRankedWikiPage;
 import org.apache.hadoop.io.Text;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,6 +22,22 @@ public class XmlWikiPageTest {
     }
 
     @Test
+    public void testWikiPageRestore(){
+        String input = "XSL_attack\t1.00\tCryptanalysis\tBlock_cipher\tAdvanced_Encryption_Standard";
+        PageRankedWikiPage page = new PageRankedWikiPage();
+        page.restoreFromString(input);
+        Assert.assertTrue(page.getTitle().equals("XSL_attack"));
+        Assert.assertTrue(page.getPageRank() == 1.00);
+        Assert.assertTrue(page.getOutLinks().size() == 3);
+    }
+
+    @Test
+    public void testStringContains(){
+        String input = "XSL_attack\t1.00\tCryptanalysis\tBlock_cipher\tAdvanced_Encryption_Standard";
+        Assert.assertTrue(input.contains("\t"));
+    }
+
+    @Test
     public void testTextEqual(){
         String a = "a";
         String b = "a";
@@ -32,8 +49,8 @@ public class XmlWikiPageTest {
 
     @Test
     public void testStringFormat(){
-        String s1 = String.format("results/PageRank.iter%d.out", 1);
-        Assert.assertTrue("Error", s1.equals("results/PageRank.iter1.out"));
+        String s1 = String.format("results/PageRank.iter%d.out, %.2f", 1, 3.1415926535);
+        Assert.assertTrue("Error", s1.equals("results/PageRank.iter1.out, 3.14"));
     }
 
     @Test
