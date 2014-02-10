@@ -1,4 +1,4 @@
-import Common.ComparableWritable;
+import Common.DescendingDoubleComparator;
 import Common.Parameters;
 import job1.AdjacencyGraphMapper;
 import job1.AdjacencyGraphReducer;
@@ -15,10 +15,12 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.FileOutputFormat;
+import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.output.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -167,14 +169,14 @@ class PageRankMaster{
         job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
         org.apache.hadoop.mapreduce.lib.input.TextInputFormat.setInputPaths(job, input);
 
-        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat.class);
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
         org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
 
         // our mapper class
         job.setMapperClass(PageRankOrderingMapper.class);
         job.setMapOutputKeyClass(DoubleWritable.class);
         job.setMapOutputValueClass(Text.class);
-//        job.setSortComparatorClass(ComparableWritable.DescendingKeyComparator.class);
+        job.setSortComparatorClass(DescendingDoubleComparator.class);
 
         //reducer class
         job.setReducerClass(PageRankOrderingReducer.class);

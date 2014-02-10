@@ -29,6 +29,6 @@ public class PageRankOrderingMapper extends Mapper<LongWritable, Text, DoubleWri
         PageRankedWikiPage page = new PageRankedWikiPage();
         page.restoreFromString(value.toString());
         if(page.getPageRank() >= threshold)
-            context.write(new DoubleWritable(page.getPageRank() / n), new Text(page.getTitle()));
+            context.write(new DoubleWritable(page.getPageRank()), new Text(page.getTitle()));
     }
 }
