@@ -35,16 +35,16 @@ public class PageRank {
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
         String bucketName = args[0];
-        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
-        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-r-00000", bucketName + "/results/PageRank.outlink.out");
+//        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
+//        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-r-00000", bucketName + "/results/PageRank.outlink.out");
 //        master.countPages(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/results/PageRank.n.out");
 
 //        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
 //        for (int runs = 1; runs < 8; runs++) {
 //            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out/part-00000", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
 //        }
-        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "/results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out/part-00000");
-        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "/results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out/part-00000");
+//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "/results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out/part-00000");
+//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "/results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out/part-00000");
     }
 
 
@@ -71,8 +71,8 @@ class PageRankMaster{
         }
 
         // if tmp path exists, delete recursively
-        if (tmpFS.exists(output)) {
-            tmpFS.delete(output, true);
+        if (tmpFS.exists(tmp)) {
+            tmpFS.delete(tmp, true);
         }
 
         // if output path exists, delete recursively
@@ -108,22 +108,56 @@ class PageRankMaster{
         job.waitForCompletion(true);
     }
 
-    public void buildOutGraph(String inputPath, String outputPath) throws IOException {
-        JobConf conf = new JobConf(PageRankMaster.class);
+    public void buildOutGraph(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(inputPath);
+        Path output = new Path(outputPath);
+        Path tmp = new Path(output, "tmp");
 
-        // Setup input for mapper
-        FileInputFormat.setInputPaths(conf, new Path(inputPath));
-        conf.setInputFormat(TextInputFormat.class);
-        conf.setMapperClass(AdjacencyOutGraphMapper.class);
+        Configuration conf = new Configuration();
 
-        // Setup output from reducer
-        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
-        conf.setOutputFormat(TextOutputFormat.class);
-        conf.setOutputKeyClass(Text.class);
-        conf.setOutputValueClass(Text.class);
-        conf.setReducerClass(AdjacencyOutGraphReducer.class);
+        FileSystem inputFS = input.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
 
-        JobClient.runJob(conf);
+        // if input path does not exists, fail
+        if (!inputFS.exists(input)) {
+            System.out.println("Input file does not exist: " + input);
+            System.exit(-1);
+        }
+
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(tmp)) {
+            tmpFS.delete(tmp, true);
+        }
+
+        // if output path exists, delete recursively
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
+        }
+
+        // Create the actual job and run it.
+        Job job = new Job(conf, "Out-graph Generation");
+        // finds the enclosing jar path
+        job.setJarByClass(PageRankMaster.class);
+
+        job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
+        XmlInputFormat.setInputPaths(job, input);
+
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+
+        // our mapper class
+        job.setMapperClass(AdjacencyOutGraphMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+
+        //reducer class
+        job.setReducerClass(AdjacencyOutGraphReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        // run job and block until job is done, printing progress
+        job.waitForCompletion(true);
     }
 
     public void countPages(String inputPath, String outputPath) throws IOException {
