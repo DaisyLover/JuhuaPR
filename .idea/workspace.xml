@@ -6,11 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="Implemented ordering using old api.&#10;">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Common/ComparableWritable.java" afterPath="$PROJECT_DIR$/src/Common/DescendingDoubleComparator.java" />
+    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="Fixed a bug in job1, where mapper key value pair  collected in wrong order&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hadoop_1_0_3.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java" afterPath="$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" afterPath="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JuhuaPR.iml" afterPath="$PROJECT_DIR$/JuhuaPR.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank.java" afterPath="$PROJECT_DIR$/src/PageRank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java" afterPath="$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/job1/XmlInputFormat.java" afterPath="$PROJECT_DIR$/src/job1/XmlInputFormat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JuhuaPR.iws" />
@@ -97,78 +99,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PageRank.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PageRank.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PageRank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="28" selection-start="2370" selection-end="2382" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3042">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdjacencyGraphMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="56" selection-start="1113" selection-end="1113" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="630">
+            <state line="38" column="78" selection-start="1392" selection-end="1392" vertical-scroll-proportion="-0.09342561" vertical-offset="270" max-vertical-offset="1836">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+                <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+                <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+                <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XmlWikiPage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="12" selection-start="1838" selection-end="1838" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1152">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdjacencyOutGraphMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/job2/AdjacencyOutGraphMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="30" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdjacencyGraphReducer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="59" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.7064394" vertical-offset="203" max-vertical-offset="756">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DescendingDoubleComparator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Common/DescendingDoubleComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="39" selection-start="239" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageRankOrderingMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="61" selection-start="1295" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="594">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageRankOrderingReducer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="378">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -198,7 +138,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/job1/XmlInputFormat.java" />
         <option value="$PROJECT_DIR$/src/job2/PageCountMapper.java" />
         <option value="$PROJECT_DIR$/src/job2/PageCountReducer.java" />
         <option value="$PROJECT_DIR$/src/job3/PageRankCalculationMapper.java" />
@@ -220,12 +159,13 @@
         <option value="$PROJECT_DIR$/src/Common/DescendingKeyComparator.java" />
         <option value="$PROJECT_DIR$/src/test/XmlWikiPageTest.java" />
         <option value="$PROJECT_DIR$/src/job5/PageRankOrderingReducer.java" />
-        <option value="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" />
         <option value="$PROJECT_DIR$/src/job5/PageRankOrderingMapper.java" />
         <option value="$PROJECT_DIR$/src/Common/ComparableWritable.java" />
         <option value="$PROJECT_DIR$/src/Common/DescendingDoubleComparator.java" />
-        <option value="$PROJECT_DIR$/src/PageRank.java" />
         <option value="$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java" />
+        <option value="$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java" />
+        <option value="$PROJECT_DIR$/src/job1/XmlInputFormat.java" />
+        <option value="$PROJECT_DIR$/src/PageRank.java" />
       </list>
     </option>
   </component>
@@ -316,23 +256,9 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="job5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="PageRank.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -346,28 +272,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="job2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JuhuaPR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="job1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,11 +305,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/hadoop-1.0.3/hadoop-tools-1.0.3.jar!/" />
+    <property name="last_opened_file_path" value="/usr/local/hadoop-1.0.3/lib/log4j-1.2.15.jar!/" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="last.edited.regexp" value="=" />
@@ -759,7 +663,11 @@
       <created>1392069379359</created>
       <updated>1392069379359</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed a bug in job1, where mapper key value pair  collected in wrong order&#10;">
+      <created>1392071553769</created>
+      <updated>1392071553769</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -815,7 +723,8 @@
     <MESSAGE value="Finshed debuging for job 1 - 3" />
     <MESSAGE value="Finshed debuging for job 1 - 4. Implemented ordering using new api. Output format is a total mess.&#10;" />
     <MESSAGE value="Implemented ordering using old api." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented ordering using old api." />
+    <MESSAGE value="Fixed a bug in job1, where mapper key value pair  collected in wrong order&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug in job1, where mapper key value pair  collected in wrong order&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -834,7 +743,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="63" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="480" />
+        <state line="23" column="63" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="480">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationMapper.java">
@@ -846,7 +757,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="62" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="600" />
+        <state line="31" column="62" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="600">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
@@ -862,7 +775,12 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="84" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -879,7 +797,12 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="65" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="735">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -906,7 +829,12 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="40" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -928,7 +856,12 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="40" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="882">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -950,7 +883,12 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="40" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -982,14 +920,24 @@
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="165">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="22" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="198">
-          <folding />
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,7 +965,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="62" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432" />
+        <state line="23" column="62" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job3/PageCountMapper.java">
@@ -1048,12 +998,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/job4/PageRankCalculationReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="357" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/job1/XmlInputFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="37" selection-start="1900" selection-end="1915" vertical-scroll-proportion="0.0" vertical-offset="388" max-vertical-offset="1980">
+        <state line="15" column="0" selection-start="357" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
           <folding />
         </state>
       </provider>
@@ -1089,13 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PageRank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="28" selection-start="2370" selection-end="2382" vertical-scroll-proportion="0.0" vertical-offset="1733" max-vertical-offset="3042">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="12" selection-start="1838" selection-end="1838" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1152">
@@ -1110,20 +1048,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="56" selection-start="1113" selection-end="1113" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="630">
+        <state line="27" column="26" selection-start="848" selection-end="848" vertical-scroll-proportion="0.62283736" vertical-offset="126" max-vertical-offset="1044">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphReducer.java">
+    <entry file="file://$PROJECT_DIR$/src/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="59" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.7064394" vertical-offset="203" max-vertical-offset="756">
+        <state line="20" column="48" selection-start="750" selection-end="750" vertical-scroll-proportion="0.62283736" vertical-offset="0" max-vertical-offset="774">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/job1/XmlInputFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="36" selection-start="2312" selection-end="2312" vertical-scroll-proportion="0.62283736" vertical-offset="648" max-vertical-offset="4590">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7282#7283#0" expanded="true" />
+            <element signature="e#7316#7317#0" expanded="true" />
+            <element signature="e#7593#7594#0" expanded="true" />
+            <element signature="e#7629#7630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PageRank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="78" selection-start="1392" selection-end="1392" vertical-scroll-proportion="-0.09342561" vertical-offset="270" max-vertical-offset="1836">
+          <folding>
+            <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>

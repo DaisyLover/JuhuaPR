@@ -35,8 +35,8 @@ public class PageRank {
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
         String bucketName = args[0];
-//        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
-//        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-00000", bucketName + "/results/PageRank.outlink.out");
+        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
+        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-r-00000", bucketName + "/results/PageRank.outlink.out");
 //        master.countPages(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/results/PageRank.n.out");
 
 //        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
@@ -53,25 +53,59 @@ public class PageRank {
 class PageRankMaster{
     private long n = 0;
 
-    public void buildInGraph(String inputPath, String outputPath) throws IOException {
-        JobConf conf = new JobConf(PageRankMaster.class);
+    public void buildInGraph(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(inputPath);
+        Path output = new Path(outputPath);
+        Path tmp = new Path(output, "tmp");
+
+        Configuration conf = new Configuration();
+
+        FileSystem inputFS = input.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
+
+        // if input path does not exists, fail
+        if (!inputFS.exists(input)) {
+            System.out.println("Input file does not exist: " + input);
+            System.exit(-1);
+        }
+
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(output)) {
+            tmpFS.delete(output, true);
+        }
+
+        // if output path exists, delete recursively
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
+        }
 
         conf.set(XmlInputFormat.START_TAG_KEY, "<page>");
         conf.set(XmlInputFormat.END_TAG_KEY, "</page>");
 
-        // Setup input for mapper
-        FileInputFormat.setInputPaths(conf, new Path(inputPath));
-        conf.setInputFormat(XmlInputFormat.class);
-        conf.setMapperClass(AdjacencyGraphMapper.class);
+        // Create the actual job and run it.
+        Job job = new Job(conf, "In-graph Generation");
+        // finds the enclosing jar path
+        job.setJarByClass(PageRankMaster.class);
 
-        // Setup output from reducer
-        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
-        conf.setOutputFormat(TextOutputFormat.class);
-        conf.setOutputKeyClass(Text.class);
-        conf.setOutputValueClass(Text.class);
-        conf.setReducerClass(AdjacencyGraphReducer.class);
+        job.setInputFormatClass(XmlInputFormat.class);
+        XmlInputFormat.setInputPaths(job, input);
 
-        JobClient.runJob(conf);
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+
+        // our mapper class
+        job.setMapperClass(AdjacencyGraphMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+
+        //reducer class
+        job.setReducerClass(AdjacencyGraphReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        // run job and block until job is done, printing progress
+        job.waitForCompletion(true);
     }
 
     public void buildOutGraph(String inputPath, String outputPath) throws IOException {
