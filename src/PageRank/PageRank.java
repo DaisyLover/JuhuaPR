@@ -40,6 +40,7 @@ public class PageRank {
 //        master.buildInGraph("/data/enwiki-latest-pages-articles1.xml-p000000010p000010000", "/PageRank.inlink.out");
 //        master.buildOutGraph("/PageRank.inlink.out", "/PageRank.outlink.out");
 //        master.countPages("/PageRank.outlink.out", "/PageRank.n.out");
+        master.getNFromFile("/PageRank.n.out");
         master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
 
         for (int runs = 0; runs < 8; runs++) {
@@ -227,7 +228,7 @@ class PageRankMaster{
     }
 
     public void getNFromFile(String inputPath) throws IOException {
-        Path path=new Path(inputPath);
+        Path path=new Path(RESULT_DIR + inputPath);
         FileSystem fs = FileSystem.get(new Configuration());
         BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(path)));
         String line = br.readLine();
