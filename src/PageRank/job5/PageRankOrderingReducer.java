@@ -1,7 +1,6 @@
-package job5;
+package PageRank.job5;
 
 import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -14,7 +13,7 @@ public class PageRankOrderingReducer extends Reducer<DoubleWritable, Text, Text,
     @Override
     protected void reduce(DoubleWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         while(values.iterator().hasNext()){
-            context.write(values.iterator().next(), new Text(String.format("%.2f", key.get())));
+            context.write(values.iterator().next(), new Text(String.format("%.6f", key.get())));
         }
     }
 }

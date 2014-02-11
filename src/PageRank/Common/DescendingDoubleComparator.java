@@ -1,9 +1,7 @@
-package Common;
+package PageRank.Common;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.RawComparator;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.WritableComparator;
 
 /**
  * Created by ziyu on 2/10/14.

@@ -1,6 +1,6 @@
-package job4;
+package PageRank.job4;
 
-import Common.PageRankedWikiPage;
+import PageRank.Common.PageRankedWikiPage;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -25,10 +25,10 @@ public class PageRankCalculationReducer extends Reducer<Text, Text, Text, Text> 
 //                System.out.println("Page restored as: " + page.serializeGrapnInfo());
             } else{
                 pageRank += Double.parseDouble(tmp);
-//                System.out.printf("Reducer %s received page rank = %s\n", key.toString(), tmp);
+//                System.out.printf("Reducer %s received page rank = %s\N", key.toString(), tmp);
             }
         }
-//        System.out.printf("Reducer %s received total page rank = %s\n", key.toString(), Double.toString(pageRank));
+//        System.out.printf("Reducer %s received total page rank = %s\N", key.toString(), Double.toString(pageRank));
         page.setPageRank((1.0 - DAMPING_FACTOR) + DAMPING_FACTOR * pageRank);
         context.write(key, new Text(page.serializeGrapnInfo()));
     }
@@ -46,10 +46,10 @@ public class PageRankCalculationReducer extends Reducer<Text, Text, Text, Text> 
 //                System.out.println("Page restored as: " + page.serializeGrapnInfo());
             } else{
                 pageRank += Double.parseDouble(tmp);
-//                System.out.printf("Reducer %s received page rank = %s\n", key.toString(), tmp);
+//                System.out.printf("Reducer %s received page rank = %s\N", key.toString(), tmp);
             }
         }
-//        System.out.printf("Reducer %s received total page rank = %s\n", key.toString(), Double.toString(pageRank));
+//        System.out.printf("Reducer %s received total page rank = %s\N", key.toString(), Double.toString(pageRank));
         page.setPageRank((1.0 - DAMPING_FACTOR) + DAMPING_FACTOR * pageRank);
         collector.collect(key, new Text(page.serializeGrapnInfo()));
     }*/

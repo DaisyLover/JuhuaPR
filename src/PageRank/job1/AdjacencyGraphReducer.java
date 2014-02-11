@@ -1,10 +1,9 @@
-package job1;
+package PageRank.job1;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 /**
  * Created by Ziyu on 2/6/14.
@@ -20,8 +19,8 @@ public class AdjacencyGraphReducer extends Reducer<Text, Text, Text, Text> {
                 hasPound = true;
             }
             else{
-                inlinkGraph.append('\t');
                 inlinkGraph.append(tmp);
+                inlinkGraph.append('\t');
             }
         }
         if(hasPound){

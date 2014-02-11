@@ -1,4 +1,4 @@
-package Common;
+package PageRank.Common;
 
 /**
  * Created by Ziyu on 2/9/14.

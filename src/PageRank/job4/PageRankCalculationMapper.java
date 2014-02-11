@@ -1,6 +1,6 @@
-package job4;
+package PageRank.job4;
 
-import Common.PageRankedWikiPage;
+import PageRank.Common.PageRankedWikiPage;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -39,7 +39,7 @@ public class PageRankCalculationMapper extends Mapper<LongWritable, Text, Text, 
         {
             Double pageRank = page.getPageRank() / page.getOutLinks().size();
             Text pageRankText = new Text(Double.toString(pageRank));
-//            System.out.printf("Mapper: distributing page rank of %s with value=%s\n", page.getTitle(), pageRankText.toString());
+//            System.out.printf("Mapper: distributing page rank of %s with value=%s\N", page.getTitle(), pageRankText.toString());
             for(String outlink: page.getOutLinks()){
                 collector.collect(new Text(outlink), pageRankText);
             }

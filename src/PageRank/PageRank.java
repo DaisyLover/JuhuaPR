@@ -1,26 +1,26 @@
-import Common.DescendingDoubleComparator;
-import Common.Parameters;
-import job1.AdjacencyGraphMapper;
-import job1.AdjacencyGraphReducer;
-import job1.XmlInputFormat;
-import job2.AdjacencyOutGraphMapper;
-import job2.AdjacencyOutGraphReducer;
-import job3.PageCountMapper;
-import job3.PageCountReducer;
-import job4.PageRankCalculationMapper;
-import job4.PageRankCalculationReducer;
-import job5.PageRankOrderingMapper;
-import job5.PageRankOrderingReducer;
+package PageRank;
+
+import PageRank.Common.DescendingDoubleComparator;
+import PageRank.Common.Parameters;
+import PageRank.job1.AdjacencyGraphMapper;
+import PageRank.job1.AdjacencyGraphReducer;
+import PageRank.job1.XmlInputFormat;
+import PageRank.job2.AdjacencyOutGraphMapper;
+import PageRank.job2.AdjacencyOutGraphReducer;
+import PageRank.job3.PageCountMapper;
+import PageRank.job3.PageCountReducer;
+import PageRank.job34.PageRankCalcInitMapper;
+import PageRank.job4.PageRankCalculationMapper;
+import PageRank.job4.PageRankCalculationReducer;
+import PageRank.job5.PageRankOrderingMapper;
+import PageRank.job5.PageRankOrderingReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.FileUtil;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.*;
-import org.apache.hadoop.mapred.FileOutputFormat;
-import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.output.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,29 +34,34 @@ public class PageRank {
 
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
-        String bucketName = args[0];
-//        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
-//        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-r-00000", bucketName + "/results/PageRank.outlink.out");
-//        master.countPages(bucketName + "/results/PageRank.outlink.out/part-r-00000", bucketName + "/results/PageRank.n.out");
+        master.BUCKET_NAME = args[0];
+        master.RESULT_DIR = master.BUCKET_NAME + "/results";
+        master.TMP_DIR = master.BUCKET_NAME + "/tmp";
+//        master.buildInGraph("/data/enwiki-latest-pages-articles1.xml-p000000010p000010000", "/PageRank.inlink.out");
+//        master.buildOutGraph("/PageRank.inlink.out", "/PageRank.outlink.out");
+//        master.countPages("/PageRank.outlink.out", "/PageRank.n.out");
+        master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
 
-        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-r-00000", bucketName + "/tmp/PageRank.iter1.out");
-        for (int runs = 1; runs < 8; runs++) {
-            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out/part-00000", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
+        for (int runs = 0; runs < 8; runs++) {
+            master.calcuatePageRank(String.format("/PageRank.iter%d.out", runs), String.format("/PageRank.iter%d.out", runs + 1));
         }
-//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "/results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out/part-00000");
-//        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "/results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out/part-00000");
+        master.orderResultByPageRank("/PageRank.iter1.out", "/PageRank.iter1.out");
+        master.orderResultByPageRank("/PageRank.iter8.out", "/PageRank.iter8.out");
     }
 
 
 }
 
 class PageRankMaster{
-    private long n = 0;
+    public static String BUCKET_NAME = null;
+    public static String RESULT_DIR = null;
+    public static String TMP_DIR = null;
+    public static long N = 0;
 
     public void buildInGraph(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path input = new Path(inputPath);
-        Path output = new Path(outputPath);
-        Path tmp = new Path(output, "tmp");
+        Path input = new Path(BUCKET_NAME + inputPath);
+        Path output = new Path(RESULT_DIR+outputPath);
+        Path tmp = new Path(TMP_DIR+outputPath);
 
         Configuration conf = new Configuration();
 
@@ -92,7 +97,7 @@ class PageRankMaster{
         XmlInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
 
         // our mapper class
         job.setMapperClass(AdjacencyGraphMapper.class);
@@ -106,12 +111,15 @@ class PageRankMaster{
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
     }
 
     public void buildOutGraph(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path input = new Path(inputPath);
-        Path output = new Path(outputPath);
-        Path tmp = new Path(output, "tmp");
+        Path input = new Path(RESULT_DIR + inputPath);
+        Path output = new Path(RESULT_DIR + outputPath);
+        Path tmp = new Path(TMP_DIR + outputPath);
 
         Configuration conf = new Configuration();
 
@@ -144,7 +152,7 @@ class PageRankMaster{
         XmlInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
 
         // our mapper class
         job.setMapperClass(AdjacencyOutGraphMapper.class);
@@ -158,12 +166,15 @@ class PageRankMaster{
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
     }
 
     public void countPages(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path input = new Path(inputPath);
-        Path output = new Path(outputPath);
-        Path tmp = new Path(output, "tmp");
+        Path input = new Path(RESULT_DIR + inputPath);
+        Path output = new Path(RESULT_DIR + outputPath);
+        Path tmp = new Path(TMP_DIR + outputPath);
 
         Configuration conf = new Configuration();
 
@@ -196,7 +207,7 @@ class PageRankMaster{
         XmlInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
 
         // our mapper class
         job.setMapperClass(PageCountMapper.class);
@@ -210,12 +221,77 @@ class PageRankMaster{
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
+    }
+
+    public void getNFromFile(String inputPath) throws IOException {
+        Path path=new Path(inputPath);
+        FileSystem fs = FileSystem.get(new Configuration());
+        BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(path)));
+        String line = br.readLine();
+        N = Long.parseLong(line.trim().split("=")[1]);
+    }
+
+    public void pageRankCalcInit(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(RESULT_DIR + inputPath);
+        Path output = new Path(TMP_DIR + outputPath);
+        Path tmp = new Path(TMP_DIR + "/tmp" + outputPath);
+
+        Configuration conf = new Configuration();
+
+        // Pass in our custom options.
+        conf.set(Parameters.N_KEY, Long.toString(N));
+
+        FileSystem inputFS = input.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
+
+        // if input path does not exists, fail
+        if (!inputFS.exists(input)) {
+            System.out.println("Input file does not exist: " + input);
+            System.exit(-1);
+        }
+
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(tmp)) {
+            tmpFS.delete(tmp, true);
+        }
+
+        // if output path exists, delete recursively
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
+        }
+
+        // Create the actual job and run it.
+        Job job = new Job(conf, "Counter");
+        // finds the enclosing jar path
+        job.setJarByClass(PageRankMaster.class);
+
+        job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
+        XmlInputFormat.setInputPaths(job, input);
+
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
+
+        // our mapper class
+        job.setMapperClass(PageRankCalcInitMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+
+        job.setNumReduceTasks(0);
+        // run job and block until job is done, printing progress
+        job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
     }
 
     public void calcuatePageRank(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path input = new Path(inputPath);
-        Path output = new Path(outputPath);
-        Path tmp = new Path(output, "tmp");
+        Path input = new Path(TMP_DIR + inputPath);
+        Path output = new Path(TMP_DIR + outputPath);
+        Path tmp = new Path(TMP_DIR + "/tmp" + outputPath);
 
         Configuration conf = new Configuration();
 
@@ -240,7 +316,7 @@ class PageRankMaster{
         }
 
         // Create the actual job and run it.
-        Job job = new Job(conf, "PageRank Calculation");
+        Job job = new Job(conf, "PageRank.PageRank Calculation");
         // finds the enclosing jar path
         job.setJarByClass(PageRankMaster.class);
 
@@ -248,7 +324,7 @@ class PageRankMaster{
         XmlInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
 
         // our mapper class
         job.setMapperClass(PageRankCalculationMapper.class);
@@ -262,29 +338,23 @@ class PageRankMaster{
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
     }
 
-    public void orderResultByPageRank(String inputPath, String outputPath, String nDataPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path pt=new Path(nDataPath);
-        FileSystem fs = FileSystem.get(new Configuration());
-        BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(pt)));
-        String line = br.readLine();
-        n = Long.parseLong(line.trim().split("=")[1]);
-
-        Path input = new Path(inputPath);
-        Path output = new Path(outputPath);
-//        Path tempDirPath = new Path(output, "tmp");
+    public void orderResultByPageRank(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(TMP_DIR + inputPath);
+        Path output = new Path(RESULT_DIR + outputPath);
+        Path tmp = new Path(TMP_DIR + "/tmp2" + outputPath);
 
         // Create the job configuration
         Configuration conf = new Configuration();
 
-        // Pass in our custom options.
-        conf.set(Parameters.N_KEY, Double.toString(n));
 
-        // get the FileSystem instances for each path
-        // this allows for the paths to live on different FileSystems (local, hdfs, s3, etc)
         FileSystem inputFS = input.getFileSystem(conf);
         FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
 
         // if input path does not exists, fail
         if (!inputFS.exists(input)) {
@@ -297,8 +367,13 @@ class PageRankMaster{
             outputFS.delete(output, true);
         }
 
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(tmp)) {
+            outputFS.delete(tmp, true);
+        }
+
         // Create the actual job and run it.
-        Job job = new Job(conf, "PageRank ordering");
+        Job job = new Job(conf, "PageRank.PageRank ordering");
         // finds the enclosing jar path
         job.setJarByClass(PageRankMaster.class);
 
@@ -306,7 +381,7 @@ class PageRankMaster{
         org.apache.hadoop.mapreduce.lib.input.TextInputFormat.setInputPaths(job, input);
 
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
-        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, tmp);
 
         // our mapper class
         job.setMapperClass(PageRankOrderingMapper.class);
@@ -321,5 +396,8 @@ class PageRankMaster{
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
+
+        //merge file
+        FileUtil.copyMerge(tmpFS, tmp, outputFS, output, true, conf, "");
     }
 }

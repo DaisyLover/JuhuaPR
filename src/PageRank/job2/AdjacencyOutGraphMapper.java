@@ -1,4 +1,4 @@
-package job2;
+package PageRank.job2;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -15,7 +15,7 @@ public class AdjacencyOutGraphMapper extends Mapper<LongWritable, Text, Text, Te
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String[] structure = value.toString().split("\\t");
         if(structure.length <= 1 || structure[1].isEmpty()){
-            context.write(new Text(structure[0]), new Text("#"));
+            context.write(new Text(structure[0]), new Text(""));
         }
         for(int i = 1; i < structure.length; ++i){
             context.write(new Text(structure[i]), new Text(structure[0]));

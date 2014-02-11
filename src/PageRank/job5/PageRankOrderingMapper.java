@@ -1,7 +1,7 @@
-package job5;
+package PageRank.job5;
 
-import Common.PageRankedWikiPage;
-import Common.Parameters;
+import PageRank.Common.PageRankedWikiPage;
+import PageRank.Common.Parameters;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -24,7 +24,6 @@ public class PageRankOrderingMapper extends Mapper<LongWritable, Text, DoubleWri
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        double n = Double.parseDouble(context.getConfiguration().get(Parameters.N_KEY));
         double threshold = 5.0;
         PageRankedWikiPage page = new PageRankedWikiPage();
         page.restoreFromString(value.toString());

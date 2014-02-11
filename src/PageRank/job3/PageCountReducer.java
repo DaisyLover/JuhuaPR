@@ -1,4 +1,4 @@
-package job3;
+package PageRank.job3;
 
 
 import org.apache.hadoop.io.Text;
@@ -18,7 +18,7 @@ public class PageCountReducer extends Reducer<Text, Text, Text, Text> {
             count++;
             values.iterator().next();
         }
-        context.write(new Text("N="+count), new Text(""));
+        context.write(new Text("N=" + count), new Text(""));
     }
 
    /* @Override

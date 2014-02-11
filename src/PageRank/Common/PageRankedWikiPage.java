@@ -1,4 +1,4 @@
-package Common;
+package PageRank.Common;
 
 import java.util.ArrayList;
 import java.util.Arrays;

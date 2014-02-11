@@ -1,7 +1,6 @@
-package job1;
+package PageRank.job1;
 
 import org.apache.hadoop.io.Text;
-import org.junit.Assert;
 
 import java.nio.charset.CharacterCodingException;
 import java.util.HashSet;

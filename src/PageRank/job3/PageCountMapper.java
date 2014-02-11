@@ -1,4 +1,4 @@
-package job3;
+package PageRank.job3;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

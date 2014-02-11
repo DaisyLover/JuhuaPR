@@ -1,10 +1,11 @@
-package test;
+package PageRank.test;
 
-import Common.PageRankedWikiPage;
+import PageRank.Common.PageRankedWikiPage;
 import org.apache.hadoop.io.Text;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.nio.charset.CharacterCodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,8 +50,18 @@ public class XmlWikiPageTest {
 
     @Test
     public void testStringFormat(){
-        String s1 = String.format("results/PageRank.iter%d.out, %.2f", 1, 3.1415926535);
-        Assert.assertTrue("Error", s1.equals("results/PageRank.iter1.out, 3.14"));
+        String s1 = String.format("results/PageRank.PageRank.iter%d.out, %.2f", 1, 3.1415926535);
+        Assert.assertTrue("Error", s1.equals("results/PageRank.PageRank.iter1.out, 3.14"));
+    }
+
+    @Test
+    public void testTextDecode() throws CharacterCodingException {
+        Text value = new Text("title\tpage1\tpage2");
+        int start = value.find("\t");
+        String title = Text.decode(value.getBytes(), 0, start);
+        String links = Text.decode(value.getBytes(), start+1, value.getLength() - start - 1);
+        Assert.assertTrue(title.equals("title"));
+        Assert.assertTrue(links.equals("page1\tpage2"));
     }
 
     @Test
