@@ -6,8 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="Added copyMerge to merge tmp files.&#10;">
+    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank/PageRank.java" afterPath="$PROJECT_DIR$/src/PageRank/PageRank.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java" afterPath="$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JuhuaPR.iws" />
@@ -97,33 +98,15 @@
       <file leaf-file-name="PageRank.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PageRank/PageRank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.12283737" vertical-offset="217" max-vertical-offset="2142">
+            <state line="48" column="15" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.75265956" vertical-offset="149" max-vertical-offset="1026">
               <folding>
                 <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
                 <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
                 <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+                <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
                 <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
                 <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageRankOrderingMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="40" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageRankCalcInitMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PageRank/job34/PageRankCalcInitMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="2" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504">
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -186,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/PageRank/job1/AdjacencyGraphReducer.java" />
         <option value="$PROJECT_DIR$/src/PageRank/job2/AdjacencyOutGraphReducer.java" />
         <option value="$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingReducer.java" />
-        <option value="$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java" />
         <option value="$PROJECT_DIR$/src/PageRank/job34/PageRankCalcInitMapper.java" />
+        <option value="$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java" />
         <option value="$PROJECT_DIR$/src/PageRank/PageRank.java" />
       </list>
     </option>
@@ -294,8 +277,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="job34" />
+              <option name="myItemId" value="PageRank" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PageRank.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -701,7 +688,11 @@
       <created>1392089570491</created>
       <updated>1392089570491</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added code to read N from PageRank.n.out">
+      <created>1392090512568</created>
+      <updated>1392090512568</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -726,7 +717,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28286853" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252818" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3252818" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -762,7 +753,8 @@
     <MESSAGE value="Changed job2 to new mapreduce API&#10;" />
     <MESSAGE value="Changed job3 and job4 to new mapreduce API&#10;" />
     <MESSAGE value="Added copyMerge to merge tmp files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added copyMerge to merge tmp files." />
+    <MESSAGE value="Added code to read N from PageRank.n.out" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added code to read N from PageRank.n.out" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -805,8 +797,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -828,8 +822,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -861,8 +857,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -889,8 +887,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -917,8 +917,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -955,8 +957,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -968,8 +972,10 @@
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1110,13 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="79" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/test/XmlWikiPageTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="0" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1782">
@@ -1133,22 +1132,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="79" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/job5/PageRankOrderingMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="40" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+        <state line="26" column="42" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="594">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1455" selection-end="1455" vertical-scroll-proportion="0.12283737" vertical-offset="217" max-vertical-offset="2142">
+        <state line="48" column="15" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.75265956" vertical-offset="149" max-vertical-offset="1026">
           <folding>
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#buildOutGraph#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#countPages#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#getNFromFile#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#pageRankCalcInit#0;class#PageRankMaster#0" expanded="false" />
             <element signature="method#calcuatePageRank#0;class#PageRankMaster#0" expanded="false" />
+            <element signature="method#orderResultByPageRank#0;class#PageRankMaster#0" expanded="false" />
           </folding>
         </state>
       </provider>

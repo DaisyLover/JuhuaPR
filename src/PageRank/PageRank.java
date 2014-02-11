@@ -37,17 +37,17 @@ public class PageRank {
         master.BUCKET_NAME = args[0];
         master.RESULT_DIR = master.BUCKET_NAME + "/results";
         master.TMP_DIR = master.BUCKET_NAME + "/tmp";
-//        master.buildInGraph("/data/enwiki-latest-pages-articles1.xml-p000000010p000010000", "/PageRank.inlink.out");
+        master.buildInGraph("/data", "/PageRank.inlink.out");
 //        master.buildOutGraph("/PageRank.inlink.out", "/PageRank.outlink.out");
 //        master.countPages("/PageRank.outlink.out", "/PageRank.n.out");
-        master.getNFromFile("/PageRank.n.out");
-        master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
-
-        for (int runs = 0; runs < 8; runs++) {
-            master.calcuatePageRank(String.format("/PageRank.iter%d.out", runs), String.format("/PageRank.iter%d.out", runs + 1));
-        }
-        master.orderResultByPageRank("/PageRank.iter1.out", "/PageRank.iter1.out");
-        master.orderResultByPageRank("/PageRank.iter8.out", "/PageRank.iter8.out");
+//        master.getNFromFile("/PageRank.n.out");
+//        master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
+//
+//        for (int runs = 0; runs < 8; runs++) {
+//            master.calcuatePageRank(String.format("/PageRank.iter%d.out", runs), String.format("/PageRank.iter%d.out", runs + 1));
+//        }
+//        master.orderResultByPageRank("/PageRank.iter1.out", "/PageRank.iter1.out");
+//        master.orderResultByPageRank("/PageRank.iter8.out", "/PageRank.iter8.out");
     }
 
 
@@ -351,7 +351,8 @@ class PageRankMaster{
 
         // Create the job configuration
         Configuration conf = new Configuration();
-
+        // Pass in our custom options.
+        conf.set(Parameters.N_KEY, Long.toString(N));
 
         FileSystem inputFS = input.getFileSystem(conf);
         FileSystem outputFS = output.getFileSystem(conf);

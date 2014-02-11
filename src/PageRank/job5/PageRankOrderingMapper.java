@@ -24,7 +24,8 @@ public class PageRankOrderingMapper extends Mapper<LongWritable, Text, DoubleWri
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        double threshold = 5.0;
+        long n = context.getConfiguration().getLong(Parameters.N_KEY, 1);
+        double threshold = 5.0 / n;
         PageRankedWikiPage page = new PageRankedWikiPage();
         page.restoreFromString(value.toString());
         if(page.getPageRank() >= threshold)
