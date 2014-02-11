@@ -34,20 +34,34 @@ public class PageRank {
 
     public static void main(String[] args) throws Exception {
         PageRankMaster master = new PageRankMaster();
-        master.BUCKET_NAME = args[0];
+        master.BUCKET_NAME = "s3://" + args[0];
         master.RESULT_DIR = master.BUCKET_NAME + "/results";
         master.TMP_DIR = master.BUCKET_NAME + "/tmp";
-        master.buildInGraph("/data", "/PageRank.inlink.out");
-//        master.buildOutGraph("/PageRank.inlink.out", "/PageRank.outlink.out");
-//        master.countPages("/PageRank.outlink.out", "/PageRank.n.out");
-//        master.getNFromFile("/PageRank.n.out");
-//        master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
-//
-//        for (int runs = 0; runs < 8; runs++) {
-//            master.calcuatePageRank(String.format("/PageRank.iter%d.out", runs), String.format("/PageRank.iter%d.out", runs + 1));
-//        }
-//        master.orderResultByPageRank("/PageRank.iter1.out", "/PageRank.iter1.out");
-//        master.orderResultByPageRank("/PageRank.iter8.out", "/PageRank.iter8.out");
+        System.out.println("Starting to build in-graph...");
+        master.buildInGraph("s3://spring-2014-ds/data", "/PageRank.inlink.out");
+        System.out.println("Fnished to building in-graph.");
+        System.out.println("Start  building out-graph...");
+        master.buildOutGraph("/PageRank.inlink.out", "/PageRank.outlink.out");
+        System.out.println("Finished building out-graph.");
+        System.out.println("Counting N...");
+        master.countPages("/PageRank.outlink.out", "/PageRank.n.out");
+        System.out.println("Finished counting N.");
+        master.getNFromFile("/PageRank.n.out");
+        System.out.println("N=" + master.N);
+        System.out.println("Init pagerank calculation...");
+        master.pageRankCalcInit("/PageRank.outlink.out", "/PageRank.iter0.out");
+        System.out.println("Pagerank initilized to be 1/N.");
+
+        for (int runs = 0; runs < 8; runs++) {
+            System.out.println("PageRank calculation iteration " + (runs + 1));
+            master.calcuatePageRank(String.format("/PageRank.iter%d.out", runs), String.format("/PageRank.iter%d.out", runs + 1));
+            System.out.println("Finished PageRank calculation iteration " + (runs + 1));
+        }
+        System.out.println("Ordering by pagerank...");
+        master.orderResultByPageRank("/PageRank.iter1.out", "/PageRank.iter1.out");
+        master.orderResultByPageRank("/PageRank.iter8.out", "/PageRank.iter8.out");
+        System.out.println("Finished ordering by pagerank");
+        System.out.println("Job complete!");
     }
 
 
@@ -60,7 +74,8 @@ class PageRankMaster{
     public static long N = 0;
 
     public void buildInGraph(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
-        Path input = new Path(BUCKET_NAME + inputPath);
+//        Path input = new Path(BUCKET_NAME + inputPath);
+        Path input = new Path(inputPath);
         Path output = new Path(RESULT_DIR+outputPath);
         Path tmp = new Path(TMP_DIR+outputPath);
 
@@ -229,7 +244,7 @@ class PageRankMaster{
 
     public void getNFromFile(String inputPath) throws IOException {
         Path path=new Path(RESULT_DIR + inputPath);
-        FileSystem fs = FileSystem.get(new Configuration());
+        FileSystem fs = path.getFileSystem(new Configuration());
         BufferedReader br=new BufferedReader(new InputStreamReader(fs.open(path)));
         String line = br.readLine();
         N = Long.parseLong(line.trim().split("=")[1]);
@@ -395,6 +410,8 @@ class PageRankMaster{
         job.setReducerClass(PageRankOrderingReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
+
+        job.setNumReduceTasks(1);
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);

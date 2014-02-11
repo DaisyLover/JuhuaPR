@@ -5,6 +5,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.nio.charset.CharacterCodingException;
 
 /**
  * Created by Ziyu and Brada on 2/6/14.
@@ -14,7 +15,11 @@ public class AdjacencyGraphMapper extends Mapper<LongWritable, Text, Text, Text>
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         XmlWikiPage wikiPage = new XmlWikiPage(value);
-        wikiPage.parse();
+        try {
+            wikiPage.parse();
+        } catch (Exception e) {
+            return;
+        }
         Text thisPage = wikiPage.getTitle();
         context.write(thisPage, new Text("#"));
         for(Text linkedPage: wikiPage.getLinks()){
