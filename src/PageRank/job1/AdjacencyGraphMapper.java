@@ -5,7 +5,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
-import java.nio.charset.CharacterCodingException;
 
 /**
  * Created by Ziyu and Brada on 2/6/14.
@@ -18,6 +17,12 @@ public class AdjacencyGraphMapper extends Mapper<LongWritable, Text, Text, Text>
         try {
             wikiPage.parse();
         } catch (Exception e) {
+            System.out.println("==================================");
+            System.out.println("Parsing page failed:");
+            System.out.println(value.toString());
+            System.out.println("----------------------------------");
+            e.printStackTrace();
+            System.out.println("==================================");
             return;
         }
         Text thisPage = wikiPage.getTitle();

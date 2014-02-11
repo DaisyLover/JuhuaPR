@@ -6,15 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/PageRank.xml" />
+    <list default="true" id="95f88d3c-54d7-4895-af16-e79de1dfe991" name="Default" comment="Added logs. Changed file system usage in getNFromFile()&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank/job1/AdjacencyGraphMapper.java" afterPath="$PROJECT_DIR$/src/PageRank/job1/AdjacencyGraphMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PageRank/PageRank.java" afterPath="$PROJECT_DIR$/src/PageRank/PageRank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Documents\MyUFL\Courses\Intro to Data Science\Projects\JuhuaPR\JuhuaPR.iml" afterPath="$PROJECT_DIR$/PageRank.iml" />
     </list>
     <ignored path="JuhuaPR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,7 +98,7 @@
       <file leaf-file-name="PageRank.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PageRank/PageRank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="414" column="0" selection-start="16059" selection-end="16059" vertical-scroll-proportion="0.69945353" vertical-offset="1806" max-vertical-offset="2400">
+            <state line="413" column="0" selection-start="16025" selection-end="16025" vertical-scroll-proportion="0.6721311" vertical-offset="1806" max-vertical-offset="2385">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />
@@ -282,7 +277,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="job5" />
+              <option name="myItemId" value="job1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -302,10 +297,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="PageRank" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageRank.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -741,7 +732,11 @@
       <created>1392090512568</created>
       <updated>1392090512568</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added logs. Changed file system usage in getNFromFile()">
+      <created>1392137489469</created>
+      <updated>1392137489469</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -803,7 +798,8 @@
     <MESSAGE value="Changed job3 and job4 to new mapreduce API&#10;" />
     <MESSAGE value="Added copyMerge to merge tmp files." />
     <MESSAGE value="Added code to read N from PageRank.n.out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added code to read N from PageRank.n.out" />
+    <MESSAGE value="Added logs. Changed file system usage in getNFromFile()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logs. Changed file system usage in getNFromFile()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1145,23 +1141,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/job1/XmlWikiPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="827" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="263" max-vertical-offset="915">
-          <folding>
-            <element signature="method#parse#0;class#XmlWikiPage#0" expanded="false" />
-          </folding>
+        <state line="33" column="21" selection-start="827" selection-end="832" vertical-scroll-proportion="0.6405694" vertical-offset="0" max-vertical-offset="960">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/job1/AdjacencyGraphMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="31" selection-start="666" selection-end="666" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="645">
+        <state line="22" column="66" selection-start="859" selection-end="859" vertical-scroll-proportion="0.23497267" vertical-offset="141" max-vertical-offset="735">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PageRank/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="414" column="0" selection-start="16059" selection-end="16059" vertical-scroll-proportion="0.69945353" vertical-offset="1806" max-vertical-offset="2400">
+        <state line="413" column="0" selection-start="16025" selection-end="16025" vertical-scroll-proportion="0.6721311" vertical-offset="1806" max-vertical-offset="2385">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#buildInGraph#0;class#PageRankMaster#0" expanded="false" />

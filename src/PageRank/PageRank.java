@@ -411,7 +411,6 @@ class PageRankMaster{
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        job.setNumReduceTasks(1);
 
         // run job and block until job is done, printing progress
         job.waitForCompletion(true);
