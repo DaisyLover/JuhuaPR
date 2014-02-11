@@ -1,20 +1,27 @@
 package job3;
 
-import org.apache.hadoop.io.LongWritable;
+
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.MapReduceBase;
-import org.apache.hadoop.mapred.OutputCollector;
-import org.apache.hadoop.mapred.Reducer;
-import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.Iterator;
+
 
 /**
  * Created by Ziyu on 2/8/14.
  */
-public class PageCountReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
+public class PageCountReducer extends Reducer<Text, Text, Text, Text> {
     @Override
+    protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        long count = 0;
+        while (values.iterator().hasNext()){
+            count++;
+            values.iterator().next();
+        }
+        context.write(new Text("N="+count), new Text(""));
+    }
+
+   /* @Override
     public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text> collector, Reporter reporter) throws IOException {
         long count = 0;
         while (values.hasNext()){
@@ -22,5 +29,5 @@ public class PageCountReducer extends MapReduceBase implements Reducer<Text, Tex
             values.next();
         }
         collector.collect(new Text("N="+count), new Text(""));
-    }
+    }*/
 }

@@ -37,12 +37,12 @@ public class PageRank {
         String bucketName = args[0];
 //        master.buildInGraph(bucketName + "/data/enwiki-latest-pages-articles1.xml", bucketName + "/results/PageRank.inlink.out");
 //        master.buildOutGraph(bucketName + "/results/PageRank.inlink.out/part-r-00000", bucketName + "/results/PageRank.outlink.out");
-//        master.countPages(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/results/PageRank.n.out");
+//        master.countPages(bucketName + "/results/PageRank.outlink.out/part-r-00000", bucketName + "/results/PageRank.n.out");
 
-//        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-00000", bucketName + "/tmp/PageRank.iter1.out");
-//        for (int runs = 1; runs < 8; runs++) {
-//            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out/part-00000", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
-//        }
+        master.calcuatePageRank(bucketName + "/results/PageRank.outlink.out/part-r-00000", bucketName + "/tmp/PageRank.iter1.out");
+        for (int runs = 1; runs < 8; runs++) {
+            master.calcuatePageRank(String.format("%s/tmp/PageRank.iter%d.out/part-00000", bucketName, runs), String.format("%s/tmp/PageRank.iter%d.out", bucketName, runs + 1));
+        }
 //        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter1.out", bucketName + "/results/PageRank.iter1.out", bucketName + "/results/PageRank.n.out/part-00000");
 //        master.orderResultByPageRank(bucketName + "/tmp/PageRank.iter8.out", bucketName + "/results/PageRank.iter8.out", bucketName + "/results/PageRank.n.out/part-00000");
     }
@@ -160,40 +160,108 @@ class PageRankMaster{
         job.waitForCompletion(true);
     }
 
-    public void countPages(String inputPath, String outputPath) throws IOException {
-        JobConf conf = new JobConf(PageRankMaster.class);
+    public void countPages(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(inputPath);
+        Path output = new Path(outputPath);
+        Path tmp = new Path(output, "tmp");
 
-        conf.setOutputKeyClass(Text.class);
-        conf.setOutputValueClass(Text.class);
+        Configuration conf = new Configuration();
 
-        conf.setInputFormat(TextInputFormat.class);
-        conf.setOutputFormat(TextOutputFormat.class);
+        FileSystem inputFS = input.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
 
-        FileInputFormat.setInputPaths(conf, new Path(inputPath));
-        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+        // if input path does not exists, fail
+        if (!inputFS.exists(input)) {
+            System.out.println("Input file does not exist: " + input);
+            System.exit(-1);
+        }
 
-        conf.setMapperClass(PageCountMapper.class);
-        conf.setReducerClass(PageCountReducer.class);
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(tmp)) {
+            tmpFS.delete(tmp, true);
+        }
 
-        JobClient.runJob(conf);
+        // if output path exists, delete recursively
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
+        }
+
+        // Create the actual job and run it.
+        Job job = new Job(conf, "Counter");
+        // finds the enclosing jar path
+        job.setJarByClass(PageRankMaster.class);
+
+        job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
+        XmlInputFormat.setInputPaths(job, input);
+
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+
+        // our mapper class
+        job.setMapperClass(PageCountMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+
+        //reducer class
+        job.setReducerClass(PageCountReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        // run job and block until job is done, printing progress
+        job.waitForCompletion(true);
     }
 
-    public void calcuatePageRank(String inputPath, String outputPath) throws IOException {
-        JobConf conf = new JobConf(PageRankMaster.class);
+    public void calcuatePageRank(String inputPath, String outputPath) throws IOException, ClassNotFoundException, InterruptedException {
+        Path input = new Path(inputPath);
+        Path output = new Path(outputPath);
+        Path tmp = new Path(output, "tmp");
 
-        conf.setOutputKeyClass(Text.class);
-        conf.setOutputValueClass(Text.class);
+        Configuration conf = new Configuration();
 
-        conf.setInputFormat(TextInputFormat.class);
-        conf.setOutputFormat(TextOutputFormat.class);
+        FileSystem inputFS = input.getFileSystem(conf);
+        FileSystem outputFS = output.getFileSystem(conf);
+        FileSystem tmpFS = tmp.getFileSystem(conf);
 
-        FileInputFormat.setInputPaths(conf, new Path(inputPath));
-        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+        // if input path does not exists, fail
+        if (!inputFS.exists(input)) {
+            System.out.println("Input file does not exist: " + input);
+            System.exit(-1);
+        }
 
-        conf.setMapperClass(PageRankCalculationMapper.class);
-        conf.setReducerClass(PageRankCalculationReducer.class);
+        // if tmp path exists, delete recursively
+        if (tmpFS.exists(tmp)) {
+            tmpFS.delete(tmp, true);
+        }
 
-        JobClient.runJob(conf);
+        // if output path exists, delete recursively
+        if (outputFS.exists(output)) {
+            outputFS.delete(output, true);
+        }
+
+        // Create the actual job and run it.
+        Job job = new Job(conf, "PageRank Calculation");
+        // finds the enclosing jar path
+        job.setJarByClass(PageRankMaster.class);
+
+        job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
+        XmlInputFormat.setInputPaths(job, input);
+
+        job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
+        org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.setOutputPath(job, output);
+
+        // our mapper class
+        job.setMapperClass(PageRankCalculationMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+
+        //reducer class
+        job.setReducerClass(PageRankCalculationReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        // run job and block until job is done, printing progress
+        job.waitForCompletion(true);
     }
 
     public void orderResultByPageRank(String inputPath, String outputPath, String nDataPath) throws IOException, ClassNotFoundException, InterruptedException {
